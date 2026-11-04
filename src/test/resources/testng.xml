@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="My Test Suite">
+    <test name="Regression Tests">
+        <classes>
+            <!-- Replace with your fully qualified package and class names -->
+            <class name="testRunner.TestRunner"/>
+        </classes>
+    </test>
+</suite>
