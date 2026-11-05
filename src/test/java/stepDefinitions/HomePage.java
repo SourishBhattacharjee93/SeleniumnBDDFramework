@@ -41,11 +41,11 @@ public class HomePage {
 
     @Then("user validates the list of products displayed under the Laptops category")
     public void userValidatesTheListOfProductsDisplayedUnderTheLaptopsCategory() {
-        try {
-            Thread.sleep(5000); // Wait for the products to load
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            Thread.sleep(5000); // Wait for the products to load
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
         List<WebElement> products = driver.findElements(By.xpath("//div[@id='tbodyid']/div//h4[@class='card-title']"));
         List<String> prod = Arrays.asList("Sony vaio i5", "Sony vaio i7", "MacBook air", "Dell i7 8gb", "2017 Dell 15.6 Inch", "MacBook Pro");
         for (WebElement product : products) {
