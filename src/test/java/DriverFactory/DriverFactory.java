@@ -34,6 +34,13 @@ public class DriverFactory {
         if (browser.equalsIgnoreCase("edge")) {
             EdgeOptions edgeOptions = new EdgeOptions();
             edgeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+            edgeOptions.addArguments("--headless=new"); // Remove if you strictly need to see the UI locally
+            edgeOptions.addArguments("--no-sandbox");
+            edgeOptions.addArguments("--disable-dev-shm-usage");
+
+            // Optional: Prevents extensions or GPU issues from causing crashes
+            edgeOptions.addArguments("--disable-extensions");
+            edgeOptions.addArguments("--disable-gpu");
             driver = new EdgeDriver(edgeOptions);
             driver.manage().window().maximize();
         } else if (browser.equalsIgnoreCase("chrome")) {
