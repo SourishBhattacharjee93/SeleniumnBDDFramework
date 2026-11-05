@@ -4,6 +4,8 @@ import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
@@ -19,7 +21,8 @@ public class DriverFactory {
 
         WebDriver driver = null;
         String browser = null;
-        try {
+        browser = System.getProperty("browser","chrome").toLowerCase().trim();
+        /*try {
             Properties prop = new Properties();
             FileInputStream input = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/Properties/config.properties");
             prop.load(input);
@@ -27,11 +30,11 @@ public class DriverFactory {
         }
         catch (Exception e) {
             e.printStackTrace();
-        }
-        if (browser.equalsIgnoreCase("firefox")) {
-            FirefoxOptions firefoxOptions = new FirefoxOptions();
-            firefoxOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-            driver = new FirefoxDriver(firefoxOptions);
+        }*/
+        if (browser.equalsIgnoreCase("edge")) {
+            EdgeOptions edgeOptions = new EdgeOptions();
+            edgeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+            driver = new EdgeDriver(edgeOptions);
             driver.manage().window().maximize();
         } else if (browser.equalsIgnoreCase("chrome")) {
 
