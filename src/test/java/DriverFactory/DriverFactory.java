@@ -37,7 +37,7 @@ public class DriverFactory {
             edgeOptions.addArguments("--headless=new"); // Remove if you strictly need to see the UI locally
             edgeOptions.addArguments("--no-sandbox");
             edgeOptions.addArguments("--disable-dev-shm-usage");
-
+            edgeOptions.addArguments("--remote-allow-origins=*");
             // Optional: Prevents extensions or GPU issues from causing crashes
             edgeOptions.addArguments("--disable-extensions");
             edgeOptions.addArguments("--disable-gpu");
