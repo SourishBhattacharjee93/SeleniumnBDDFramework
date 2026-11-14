@@ -22,15 +22,15 @@ public class DriverFactory {
         WebDriver driver = null;
         String browser = null;
         browser = System.getProperty("browser","chrome").toLowerCase().trim();
-        /*try {
+        try {
             Properties prop = new Properties();
             FileInputStream input = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/Properties/config.properties");
             prop.load(input);
-            browser = prop.getProperty("browser").toUpperCase().trim();
+            browser = System.getProperty("browser",prop.getProperty("browser")).toLowerCase().trim();
         }
         catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
         if (browser.equalsIgnoreCase("edge")) {
             EdgeOptions edgeOptions = new EdgeOptions();
             edgeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
