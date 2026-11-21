@@ -10,14 +10,9 @@ import org.testng.annotations.DataProvider;
         glue = {"stepDefinitionsAPI"},
         dryRun = false,
         monochrome = false,
-        tags = "@AddPlaceScenario",
+        tags = "@AddPlaceAPI",
         plugin = {"pretty", "html:target/cucumber.html"}
 )
 public class TestRunnerAPI extends AbstractTestNGCucumberTests {
 
-    @Override
-    @DataProvider(parallel = false)
-    public Object[][] scenarios(ITestContext context) {
-        return super.scenarios(context);
-    }
 }

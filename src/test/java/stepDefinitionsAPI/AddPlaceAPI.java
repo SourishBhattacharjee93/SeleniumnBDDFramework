@@ -1,5 +1,7 @@
 package stepDefinitionsAPI;
 
+import APIUtilities.APIPayload;
+import APIUtilities.GenericUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,42 +19,29 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-public class AddPlaceAPI {
+public class AddPlaceAPI extends GenericUtils {
 
     Response response;
     RequestSpecification request;
+    APIPayload apiPayload = new APIPayload();
 
-    @Given("user prepares the payload with {string}, {string}, {string}, {string}, {string}")
-    public void user_prepares_the_payload_with(String lat, String lng, String name, String address, String language) {
+    @Given("user prepares the payload with {string}, {string}")
+    public void user_prepares_the_payload_with(String testDataSheet, String testDataKey) {
 
-        Map<String, Object> body = new HashMap<>();
-        Map<String, Object> location = new HashMap<>();
-        location.put("lat", Double.parseDouble(lat));
-        location.put("lng", Double.parseDouble(lng));
-        body.put("location", location);
-        body.put("accuracy", 50);
-        body.put("name", name);
-        body.put("phone_number", "(+91) 983 893 3937");
-        body.put("address", address);
-        List<String> types = new ArrayList<>();
-        types.add("shoe park");
-        types.add("shop");
-        body.put("types", types);
-        body.put("website", "https://google.com");
-        body.put("language", language);
+        try {
+            request = given().spec(googleAPIRequestSpec())
+                    .body(apiPayload.getAddPlacePayload(testDataSheet, testDataKey));
+        } catch (Exception e) {
+            System.out.println("Error in prepares the payload " + e.getMessage());
+        }
 
-        RestAssured.baseURI = "https://rahulshettyacademy.com";
-
-        request = given().log().all().header("Content-Type", "application/json")
-                .queryParam("key", "qaclick123")
-                .body(body);
 
     }
 
     @When("user makes a POST request to endpoint")
     public void user_makes_a_post_request_to_endpoint() {
-        response = request.when().post("/maps/api/place/add/json")
-                .then().log().all().extract().response();
+        response = request.when().post(getProperties("addPlace"))
+                .then().extract().response();
 
     }
 
