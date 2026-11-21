@@ -1,0 +1,24 @@
+{
+  "AddPlaceValidSet1": {
+    "lat": "-62.351531",
+    "lng": "51.514661",
+    "accuracy": "20",
+    "name": "Normandy Beach House",
+    "phone_number": "(+91) 162 621 6215",
+    "address": "41, Front layout, baron street 09",
+    "types": "cycle park,cake shop",
+    "website": "http://google.com",
+    "language": "English-US"
+  },
+  "AddPlaceValidSet2": {
+    "lat": "-84.351531",
+    "lng": "72.514661",
+    "accuracy": "100",
+    "name": "2nd Normandy Beach House",
+    "phone_number": "(+91) 651 663 6151",
+    "address": "21 B Baker Street, London 09",
+    "types": "detective office,doctor clinic",
+    "website": "http://yahoo.com",
+    "language": "English-UK"
+  }
+}
